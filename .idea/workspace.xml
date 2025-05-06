@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de542c76-022f-412b-8173-6c6d791a603f" name="Changes" comment="Reverted Camera packages">
-      <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/livelyness_detection.iml" beforeDir="false" afterPath="$PROJECT_DIR$/livelyness_detection.iml" afterDir="false" />
-    </list>
+    <list default="true" id="de542c76-022f-412b-8173-6c6d791a603f" name="Changes" comment="- packages update" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -97,7 +90,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745067277974</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="- packages update">
+      <option name="closed" value="true" />
+      <created>1746552880269</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1746552880269</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -109,6 +110,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="temp version decrease for old android shorebird patch to work" />
     <MESSAGE value="Reverted Camera packages" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reverted Camera packages" />
+    <MESSAGE value="- packages update" />
+    <option name="LAST_COMMIT_MESSAGE" value="- packages update" />
   </component>
 </project>
