@@ -3,8 +3,10 @@
 import 'dart:async';
 import 'dart:ui' as ui;
 
+import 'package:camera/camera.dart';
 import 'package:collection/collection.dart';
 import 'package:livelyness_detection/index.dart';
+
 import '../../livelyness_detection.dart';
 
 List<CameraDescription> availableCams = [];
