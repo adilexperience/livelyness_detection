@@ -80,6 +80,7 @@ class _MLivelyness7DetectionScreenState
 
   void _postFrameCallBack() async {
     availableCams = await availableCameras();
+    if (!mounted) return;
     if (availableCams.any(
       (element) =>
           element.lensDirection == CameraLensDirection.front &&
@@ -154,6 +155,7 @@ class _MLivelyness7DetectionScreenState
   }
 
   Future<void> _processCameraImage(CameraImage cameraImage) async {
+    if (!mounted) return;
     final WriteBuffer allBytes = WriteBuffer();
     for (final Plane plane in cameraImage.planes) {
       allBytes.putUint8List(plane.bytes);
@@ -212,6 +214,13 @@ class _MLivelyness7DetectionScreenState
     _isBusy = true;
     final faces = await MLHelper.instance.processInputImage(inputImage);
 
+    // The screen can be closed while ML Kit is still processing a frame;
+    // `context` (MediaQuery below) must not be touched once unmounted.
+    if (!mounted) {
+      _isBusy = false;
+      return;
+    }
+
     if (inputImage.metadata?.size != null &&
         inputImage.metadata?.rotation != null) {
       if (faces.isEmpty) {
@@ -244,6 +253,10 @@ class _MLivelyness7DetectionScreenState
               await _completeStep(
                 step: _steps[_stepsKey.currentState?.currentIndex ?? 0].step,
               );
+              if (!mounted) {
+                _isBusy = false;
+                return;
+              }
             }
           }
         }
@@ -275,6 +288,7 @@ class _MLivelyness7DetectionScreenState
       setState(() {});
     }
     await _stepsKey.currentState?.nextPage();
+    if (!mounted) return;
     _stopProcessing();
   }
 
@@ -292,6 +306,7 @@ class _MLivelyness7DetectionScreenState
       );
       await _cameraController?.stopImageStream();
       final XFile? clickedImage = await _cameraController?.takePicture();
+      if (!mounted) return;
       if (clickedImage == null) {
         _startLiveFeed();
         return;
@@ -301,6 +316,7 @@ class _MLivelyness7DetectionScreenState
         didCaptureAutomatically: didCaptureAutomatically,
       );
     } catch (e) {
+      if (!mounted) return;
       _startLiveFeed();
     }
   }
@@ -309,6 +325,7 @@ class _MLivelyness7DetectionScreenState
     XFile? imgToReturn,
     bool? didCaptureAutomatically,
   }) {
+    if (!mounted) return;
     final String imgPath = imgToReturn?.path ?? "";
     if (imgPath.isEmpty || didCaptureAutomatically == null) {
       Navigator.of(context).pop(null);
