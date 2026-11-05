@@ -41,6 +41,12 @@ class LivelynessDetectionStepOverlayState
   }
 
   @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       height: double.infinity,
@@ -75,13 +81,17 @@ class LivelynessDetectionStepOverlayState
           milliseconds: 500,
         ),
       );
+      // The screen may be closed while the delays/animation are running.
+      if (!mounted) return;
       await _pageController.nextPage(
         duration: const Duration(milliseconds: 500),
         curve: Curves.easeIn,
       );
+      if (!mounted) return;
       await Future.delayed(
         const Duration(seconds: 2),
       );
+      if (!mounted) return;
       _hideLoader();
       setState(() => _currentIndex++);
     } else {
@@ -90,7 +100,8 @@ class LivelynessDetectionStepOverlayState
   }
 
   void reset() {
-    _pageController.jumpToPage(0);
+    if (!mounted) return;
+    if (_pageController.hasClients) _pageController.jumpToPage(0);
     setState(() => _currentIndex = 0);
   }
 
